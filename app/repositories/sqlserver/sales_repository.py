@@ -66,7 +66,7 @@ class SalesRepository:
             query += " WHERE YEAR(sale_date) = ?"
             params.append(year)
 
-        query += " GROUP BY YEAR(sale_date), MONTH(sale_date) ORDER BY year, month"
+        query += " GROUP BY YEAR(sale_date), MONTH(sale_date) ORDER BY YEAR(sale_date), MONTH(sale_date)"
 
         connection = get_sqlserver_connection()
 
