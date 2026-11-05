@@ -1,0 +1,14 @@
+[
+  {"category_id": "CAT01", "name": "Computers", "department": "Technology", "status": "Active"},
+  {"category_id": "CAT02", "name": "Smartphones", "department": "Technology", "status": "Active"},
+  {"category_id": "CAT03", "name": "Tablets", "department": "Technology", "status": "Active"},
+  {"category_id": "CAT04", "name": "Accessories", "department": "Technology", "status": "Active"},
+  {"category_id": "CAT05", "name": "Monitors", "department": "Technology", "status": "Active"},
+  {"category_id": "CAT06", "name": "Printers", "department": "Office", "status": "Active"},
+  {"category_id": "CAT07", "name": "Networking", "department": "Technology", "status": "Active"},
+  {"category_id": "CAT08", "name": "Storage", "department": "Technology", "status": "Active"},
+  {"category_id": "CAT09", "name": "Audio", "department": "Electronics", "status": "Active"},
+  {"category_id": "CAT10", "name": "Cameras", "department": "Electronics", "status": "Active"},
+  {"category_id": "CAT11", "name": "Software", "department": "Digital", "status": "Active"},
+  {"category_id": "CAT12", "name": "Services", "department": "Support", "status": "Active"}
+]
