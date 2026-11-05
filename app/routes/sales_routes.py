@@ -61,6 +61,36 @@ def get_date_filters():
 
 
 @sales_bp.route(
+    "/analytics/sales-by-month",
+    methods=["GET"]
+)
+def sales_by_month():
+
+    year_raw = request.args.get("year")
+    year = None
+
+    if year_raw is not None:
+        try:
+            year = int(year_raw)
+
+            if not 1 <= year <= 9999:
+                return jsonify({
+                    "message": "Error en los parámetros enviados",
+                    "errors": ["El año debe estar entre 1 y 9999"]
+                }), 400
+
+        except ValueError:
+            return jsonify({
+                "message": "Error en los parámetros enviados",
+                "errors": ["El año debe ser un número entero"]
+            }), 400
+
+    result = service.sales_by_month(year=year)
+
+    return jsonify(result.__dict__)
+
+
+@sales_bp.route(
     "/analytics/sales-total",
     methods=["GET"]
 )

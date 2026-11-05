@@ -11,6 +11,18 @@ class SalesService:
         self.repository = SalesRepository()
 
 
+    def sales_by_month(self, year=None):
+
+        result = self.repository.get_sales_by_month(year=year)
+
+        return IndicatorResponse(
+            indicator="sales_by_month",
+            title="Ventas por mes",
+            chart_type="bar",
+            data=result,
+            sources=["SQL Server"]
+        )
+
     def total_sales(self, year=None, month=None):
 
         result = self.repository.get_total_sales(

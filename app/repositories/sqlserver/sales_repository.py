@@ -46,6 +46,48 @@ class SalesRepository:
 
 
     # ==========================================
+    # INDICADOR SIMPLE
+    # Ventas agrupadas por mes
+    # ==========================================
+
+    def get_sales_by_month(self, year=None):
+
+        query = """
+            SELECT
+                YEAR(sale_date)  AS year,
+                MONTH(sale_date) AS month,
+                COALESCE(SUM(total_amount), 0) AS total
+            FROM sales
+        """
+
+        params = []
+
+        if year is not None:
+            query += " WHERE YEAR(sale_date) = ?"
+            params.append(year)
+
+        query += " GROUP BY YEAR(sale_date), MONTH(sale_date) ORDER BY year, month"
+
+        connection = get_sqlserver_connection()
+
+        try:
+            cursor = connection.cursor()
+            cursor.execute(query, params)
+            rows = cursor.fetchall()
+
+            return [
+                {
+                    "label": f"{row[0]:04d}-{row[1]:02d}",
+                    "value": float(row[2])
+                }
+                for row in rows
+            ]
+
+        finally:
+            connection.close()
+
+
+    # ==========================================
     # INDICADOR INTEGRADO
     # Producto más vendido
     # ==========================================
